@@ -6,6 +6,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -34,9 +35,7 @@ string Converte(int caracter);
 bool vazia(Pilha *p);
 void PImprime(Pilha *p);
 int Prioridade(char operador);
-void EquacaoPosfixa(string equacao_infixa);
-// void inverte(string equacao);
-// void TrataParentesses(string equacao);
-// void EquacaoPrefixa(string equacao);
+string EquacaoPosfixa(string equacao_infixa);
+void EquacaoPrefixa(string equacao_infixa);
 
 #endif

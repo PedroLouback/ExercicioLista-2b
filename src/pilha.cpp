@@ -68,13 +68,14 @@ int Prioridade(char caractere)
 		return 1;
 	}
 	else
-		return -1;
+		return 0;
 }
 
 //Construção Posfixa
 
-void EquacaoPosfixa(string equacao_infixa)
+string EquacaoPosfixa(string equacao_infixa)
 {
+	equacao_infixa = '(' + equacao_infixa + ')'; 
 	Pilha Posfixa;
 	FPVazia(&Posfixa);
 	Item aux;
@@ -105,7 +106,7 @@ void EquacaoPosfixa(string equacao_infixa)
 		}
 		else
 		{
-			while (!vazia(&Posfixa) && (Prioridade(equacao_infixa[i]) <= Prioridade(Posfixa.top->data.notacao)))
+			while (!vazia(&Posfixa) && (Prioridade(caractere_equacao) < Prioridade(Posfixa.top->data.notacao)))
 			{
 				equacao_posfixa += Posfixa.top->data.notacao;
 				Pop(&Posfixa, &aux);
@@ -114,58 +115,43 @@ void EquacaoPosfixa(string equacao_infixa)
 			Push(&Posfixa, aux);
 		}
 	}
-
+	
 	while (!vazia(&Posfixa))
 	{
 		equacao_posfixa += Posfixa.top->data.notacao;
 		Pop(&Posfixa, &aux);
 	}
 
-	cout << "\nA equação '" << equacao_infixa << "' em notação posfixa é: " << equacao_posfixa << "\n";	
+	return equacao_posfixa;
 
 }
 
 //Construção Prefixa
 
-// void inverte(string equacao)
-// {
+void EquacaoPrefixa(string equacao_infixa)
+{
+	char caractere_equacao;
+	string equacao_prefixa;
 
-// 	int i = 0, j = 0;
-// 	int tam = strlen(equacao);
-// 	char prefixa[tam];
+	reverse(equacao_infixa.begin(), equacao_infixa.end());
+	
+	for (size_t i = 0; i < equacao_infixa.size(); i++){
+		caractere_equacao = equacao_infixa[i];
 
-// 	j = strlen(equacao);
-// 	prefixa[j--] = '\0';
-// 	while (equacao[i] != '\0')
-// 	{
-// 		prefixa[j] = equacao[i];
-// 		j--;
-// 		i++;
-// 	}
-// 	strcpy (equacao, prefixa);
-// }
+		if(caractere_equacao == '('){
+			caractere_equacao = ')';
+			i++;
+		}else if (caractere_equacao == ')'){
+			caractere_equacao = '(';
+			i++;
+		}
+	}
 
-// void TrataParentesses(string equacao)
-// {
-// 	int i = 0;
-// 	while (equacao[i] != '\0')
-// 	{
-// 		if (equacao[i] == '(')
-// 		{
-// 			equacao[i] = ')';
-// 		}
-// 		else if (equacao[i] == ')')
-// 		{
-// 			equacao[i] = '(';
-// 		}
-// 		i++;
-// 	}
-// }
+	equacao_prefixa = EquacaoPosfixa(equacao_infixa);
 
-// void EquacaoPrefixa(string equacao)
-// {
-// 	inverte(equacao);
-// 	TrataParentesses(equacao);
-// 	EquacaoPosfixa(equacao);
-// 	inverte(equacao);
-// }
+	reverse(equacao_prefixa.begin(), equacao_prefixa.end());
+
+	cout << "\nA equação '" << equacao_infixa << "' em notação prefixa é: " << equacao_prefixa << endl;
+	cout << "\n";
+
+}
