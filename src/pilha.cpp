@@ -151,6 +151,7 @@ string EquacaoPrefixa(string equacao_infixa)
 	string equacao_prefixa;
 
 	equacao_infixa = inverte(equacao_infixa);
+	
 
 	for (size_t i = 0; i < equacao_infixa.size(); i++)
 	{
@@ -168,9 +169,12 @@ string EquacaoPrefixa(string equacao_infixa)
 		}
 	}
 
-	equacao_prefixa = EquacaoPosfixa(equacao_infixa);
+	cout << equacao_infixa << endl;
 
+	equacao_prefixa = EquacaoPosfixa(equacao_infixa);
+	cout << equacao_prefixa << endl;
 	equacao_prefixa = inverte(equacao_prefixa);
+	cout << equacao_prefixa << " Prefixa Invertida";
 
 	return equacao_prefixa;
 }
