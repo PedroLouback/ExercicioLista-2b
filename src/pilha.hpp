@@ -6,7 +6,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
-#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -14,16 +13,19 @@ typedef struct Item Item;
 typedef struct Block Block;
 typedef struct Pilha Pilha;
 
-struct Item{
+struct Item
+{
 	char notacao;
 };
 
-struct Block{
+struct Block
+{
 	Item data;
 	Block *prox;
 };
 
-struct Pilha{
+struct Pilha
+{
 	Block *base;
 	Block *top;
 };
@@ -36,6 +38,7 @@ bool vazia(Pilha *p);
 void PImprime(Pilha *p);
 int Prioridade(char operador);
 string EquacaoPosfixa(string equacao_infixa);
-void EquacaoPrefixa(string equacao_infixa);
+string inverte(string equacao_infixa);
+string EquacaoPrefixa(string equacao_infixa);
 
 #endif
