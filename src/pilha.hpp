@@ -5,12 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
-#include <vector>
 #include <string.h>
-#include <stdio.h>
-#include <limits.h>
-
-#define TAM 10
 
 using namespace std;
 
@@ -38,11 +33,10 @@ void Pop(Pilha *p, Item *d);
 string Converte(int caracter);
 bool vazia(Pilha *p);
 void PImprime(Pilha *p);
+int Prioridade(char operador);
+void EquacaoPosfixa(string equacao_infixa);
 // void inverte(string equacao);
 // void TrataParentesses(string equacao);
-int Prioridade(char operador);
 // void EquacaoPrefixa(string equacao);
-void EquacaoPosfixa(string equacao_infixa);
-
 
 #endif
